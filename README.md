@@ -19,20 +19,20 @@ This script converts the raw value extracted from the database into a Hashcat-co
 The script accepts input as either a command line argument or standard input (stdin):
 
 ```
-python3 script.py --hash "<BASE64_HASH>"
-echo "<BASE64_HASH>" | python3 script.py
+python3 mirth-pbkdf2-to-hashcat.py --hash "<BASE64_HASH>"
+echo "<BASE64_HASH>" | python3 mirth-pbkdf2-to-hashcat.py
 ```
 
 It also supports specifying a custom iteration count if the installation's configuration differs from the default:
 
 ```
-python3 script.py --hash "<BASE64_HASH>" --iterations 750000
-echo "<BASE64_HASH>" | python3 script.py --iterations 750000
+python3 mirth-pbkdf2-to-hashcat.py --hash "<BASE64_HASH>" --iterations 750000
+echo "<BASE64_HASH>" | python3 mirth-pbkdf2-to-hashcat.py --iterations 750000
 ```
 
 This string can then be supplied directly to Hashcat (with the appropriate mode):
 
 ```
-python3 script.py --hash "<BASE64_HASH>" > hash.txt
+python3 mirth-pbkdf2-to-hashcat.py --hash "<BASE64_HASH>" > hash.txt
 hashcat -m 10900 -a 0 hash.txt wordlist.txt
 ```
